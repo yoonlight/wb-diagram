@@ -1,0 +1,36 @@
+@startuml ERD
+
+entity "user" as user {
+  *id: number <<PK>>
+  --
+  *username: string
+  is_active: boolean
+  role_id: number <<FK>>
+}
+
+entity "role" as role {
+  *id: number <<PK>>
+  --
+  name: string
+}
+
+user ..|| role
+
+entity "image" as img {
+  *id: number <<PK>>
+  --
+  *image_type_id: number <<FK>>
+  title: string
+  filenmae: string
+  is_active: boolean
+}
+
+entity "image_type" as img_type {
+  *id: number <<PK>>
+  --
+  *name: string
+}
+
+img ..|| img_type
+
+@enduml
